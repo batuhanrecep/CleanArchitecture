@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Core.Persistence.Repositories;
 
-    public class Entity
-    {
-    }
+public class Entity
+{
+    //deneme
+}
 
