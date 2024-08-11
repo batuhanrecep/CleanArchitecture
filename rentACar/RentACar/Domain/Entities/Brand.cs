@@ -11,4 +11,6 @@ public class Brand : Entity<Guid>
     public string Name { get; set; }
     //abas
     //deneme
+
+    //a
 }
