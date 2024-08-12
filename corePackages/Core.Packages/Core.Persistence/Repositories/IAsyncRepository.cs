@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Core.Persistence.Repositories;
-public interface IAsyncRepository<TEntity, TEntityId>
+public interface IAsyncRepository<TEntity, TEntityId> : IQueryable<TEntity>
     where TEntity : Entity<TEntityId>
 {
     Task<TEntity> GetAsync(
