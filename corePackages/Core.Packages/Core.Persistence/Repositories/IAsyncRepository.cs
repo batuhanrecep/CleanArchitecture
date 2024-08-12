@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Core.Persistence.Repositories;
-public interface IAsyncRepository<TEntity, TEntityId> : IQueryable<TEntity>
+public interface IAsyncRepository<TEntity, TEntityId> : IQuery<TEntity>
     where TEntity : Entity<TEntityId>
 {
     Task<TEntity> GetAsync(
@@ -50,9 +50,9 @@ public interface IAsyncRepository<TEntity, TEntityId> : IQueryable<TEntity>
         );
 
     Task<TEntity> AddAsync(TEntity entity);
-    Task<ICollection<TEntity>> AddRangeAsync(ICollection<TEntity> entity); //Bulk operation
+    Task<ICollection<TEntity>> AddRangeAsync(ICollection<TEntity> entities); //Bulk operation
     Task<TEntity> UpdateAsync(TEntity entity);
-    Task<ICollection<TEntity>> UpdateRangeAsync(ICollection<TEntity> entity);
+    Task<ICollection<TEntity>> UpdateRangeAsync(ICollection<TEntity> entities);
     Task<TEntity> DeleteAsync(TEntity entity, bool permanent = false); //Soft delete or permanent delete - Default option is soft
-    Task<ICollection<TEntity>> DeleteRangeAsync(ICollection<TEntity> entity, bool permanent = false);
+    Task<ICollection<TEntity>> DeleteRangeAsync(ICollection<TEntity> entities, bool permanent = false);
 }
