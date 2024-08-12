@@ -9,17 +9,17 @@ namespace Core.Persistence.Dynamic;
 
 public static class IQueryableDynamicFilterExtensions
 {
-    private static readonly string[] _orders = { "asc", "desc" };
+    private static readonly string[] _orders = { "asc", "desc" }; //Ascended, Descended
     private static readonly string[] _logics = { "and", "or" };
 
     private static readonly IDictionary<string, string> _operators = new Dictionary<string, string>
     {
-        { "eq", "=" },
-        { "neq", "!=" },
-        { "lt", "<" },
-        { "lte", "<=" },
-        { "gt", ">" },
-        { "gte", ">=" },
+        { "eq", "=" }, // equal
+        { "neq", "!=" }, // not equal
+        { "lt", "<" }, // less than
+        { "lte", "<=" }, // less than or equal
+        { "gt", ">" }, // greater than
+        { "gte", ">=" }, // greater than or equal
         { "isnull", "== null" },
         { "isnotnull", "!= null" },
         { "startswith", "StartsWith" },
@@ -82,6 +82,7 @@ public static class IQueryableDynamicFilterExtensions
                 GetFilters(item, filters);
     }
 
+    //System.Linq.Dynamic.Core ask for string and it transforms that to LINQ by string concatenation
     public static string Transform(Filter filter, IList<Filter> filters)
     {
         if (string.IsNullOrEmpty(filter.Field))
