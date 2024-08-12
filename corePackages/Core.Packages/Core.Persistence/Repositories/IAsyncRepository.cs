@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Query;
+﻿using Core.Persistence.Paging;
+using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ public interface IAsyncRepository<TEntity, TEntityId> : IQueryable<TEntity>
         CancellationToken cancellationToken = default
         );
 
-    Task<IPaginate<TEntity>> GetListAsync( //Pagination - Sayfalama in turkish
+    Task<Paginate<TEntity>> GetListAsync( //Pagination - Sayfalama in turkish
         Expression<Func<TEntity, bool>>? predicate = null,
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
@@ -29,7 +30,7 @@ public interface IAsyncRepository<TEntity, TEntityId> : IQueryable<TEntity>
         CancellationToken cancellationToken = default
         );
 
-    Task<IPaginate<TEntity>> GetListByDynamicAsync( //For example, amazons option list like what is the brand, model price etc. Search the list for these.
+    Task<Paginate<TEntity>> GetListByDynamicAsync( //For example, amazons option list like what is the brand, model price etc. Search the list for these.
         DynamicQuery dynamic,
         Expression<Func<TEntity, bool>>? predicate = null,
         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
