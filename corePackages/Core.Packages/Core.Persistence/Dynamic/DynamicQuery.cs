@@ -20,3 +20,8 @@ public class DynamicQuery
         
     }
 }
+//System.Linq.Dynamic library will transform these
+
+//Select * from cars where unitPrice<100 and (transmission = "automatic" or ...)...
+
+//p=>p.UnitPrice<=100 && ()
