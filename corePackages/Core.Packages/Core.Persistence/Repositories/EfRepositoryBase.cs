@@ -132,7 +132,8 @@ where TContext : DbContext
     }
 
 
-    //SYNC
+    //SYNC - THESE ARE EMPTY FOR NOW
+    //---------------------------------------------------------------------------------------------------
     public TEntity? Get(Expression<Func<TEntity, bool>> predicate, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, bool withDeleted = false, bool enableTracking = true)
     {
         throw new NotImplementedException();
@@ -185,6 +186,8 @@ where TContext : DbContext
         throw new NotImplementedException();
     }
 
+    //---------------------------------------------------------------------------------------------------
+
     //METHODS
     protected void CheckHasEntityHaveOneToOneRelation(TEntity entity)
     {
@@ -215,7 +218,7 @@ where TContext : DbContext
         if (!permanent)
         {
             CheckHasEntityHaveOneToOneRelation(entity);
-            await setEntityAsSoftDeletedAsync(entity);
+            await SetEntityAsSoftDeletedAsync(entity);
         }
         else
         {
@@ -237,7 +240,7 @@ where TContext : DbContext
         return queryProviderQuery.Where(x => !((IEntityTimestamps)x).DeletedDate.HasValue);
     }
 
-    private async Task setEntityAsSoftDeletedAsync(IEntityTimestamps entity)
+    private async Task SetEntityAsSoftDeletedAsync(IEntityTimestamps entity) //CAMELCASE
     {
         if (entity.DeletedDate.HasValue)
             return;
@@ -267,7 +270,7 @@ where TContext : DbContext
                 }
 
                 foreach (IEntityTimestamps navValueItem in (IEnumerable)navValue)
-                    await setEntityAsSoftDeletedAsync(navValueItem);
+                    await SetEntityAsSoftDeletedAsync(navValueItem);
             }
             else
             {
@@ -280,7 +283,7 @@ where TContext : DbContext
                         continue;
                 }
 
-                await setEntityAsSoftDeletedAsync((IEntityTimestamps)navValue);
+                await SetEntityAsSoftDeletedAsync((IEntityTimestamps)navValue);
             }
         }
 
