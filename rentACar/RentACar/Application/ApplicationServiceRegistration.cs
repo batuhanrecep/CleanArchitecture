@@ -14,6 +14,7 @@ public static class ApplicationServiceRegistration
         //For cleaner program.cs(webAPI), we will add Registrations to all layer like this
         services.AddMediatR(configuration =>
         {
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
             configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
         });
 
