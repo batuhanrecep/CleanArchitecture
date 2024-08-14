@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Persistence.EntityConfigurations;
-public class BrandConfiguratin : IEntityTypeConfiguration<Brand>
+public class BrandConfiguration : IEntityTypeConfiguration<Brand>
 {
     public void Configure(EntityTypeBuilder<Brand> builder)
     {
