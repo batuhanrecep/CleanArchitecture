@@ -3,17 +3,18 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApi.Controllers;
-[Route("api/[controller]")]
-[ApiController]
-public class BrandsController : BaseController
+namespace WebApi.Controllers
 {
-
-    [HttpPost]
-    public async Task<IActionResult> Add([FromBody] CreateBrandCommand createBrandCommand)
+    [Route("api/[controller]")]
+    [ApiController]
+    public class BrandsController : BaseController
     {
-        CreatedBrandResponse response = await Mediator.Send(createBrandCommand);
-        return Ok(response);
-    }
 
+        [HttpPost]
+        public async Task<IActionResult> Add([FromBody] CreateBrandCommand createBrandCommand)
+        {
+            CreatedBrandResponse response = await Mediator.Send(createBrandCommand);
+            return Ok(response);
+        }
+    }
 }
