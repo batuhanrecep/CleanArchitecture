@@ -18,6 +18,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="MediatR" Version="12.4.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Core.Application">
+      <HintPath>..\..\..\corePackages\Core.Packages\Core.Application\bin\Debug\net8.0\Core.Application.dll</HintPath>
+    </Reference>
     <Reference Include="Core.Persistence">
       <HintPath>..\..\..\corePackages\Core.Packages\Core.Persistence\bin\Debug\net8.0\Core.Persistence.dll</HintPath>
     </Reference>
