@@ -22,7 +22,7 @@ namespace Persistence.Contexts
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
         {
             Configuration = configuration;
-            Database.EnsureCreated();
+            Database.EnsureCreated(); //THIS CAUSES THE ERROR WHEN U TRY MIGRATION "There is already an object named 'Brands' in the database." 
 
         }
 
