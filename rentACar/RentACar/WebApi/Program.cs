@@ -22,7 +22,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//This if block exists for tests 
+//This if block exists for tests (Development or Production)
 //if (app.Environment.IsProduction())  
 app.ConfigureCustomExceptionMiddleware(); //This comes from our core.packages
 
