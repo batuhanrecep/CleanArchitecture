@@ -9,5 +9,6 @@ public interface ICachableRequest
 {
     string CacheKey { get; }
     bool BypassCache { get; }
+    string? CacheGroupKey { get; } //To group keys for cache removing
     TimeSpan? SlidingExpiration { get; }
 }
