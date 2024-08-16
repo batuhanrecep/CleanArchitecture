@@ -9,6 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddApplicationServices();  //Application Layer Registration Services
 builder.Services.AddPersistenceServices(builder.Configuration);  //Persistence Layer Registration Services
+
+builder.Services.AddDistributedMemoryCache(); //For our cache system
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
