@@ -10,8 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddApplicationServices();  //Application Layer Registration Services
 builder.Services.AddPersistenceServices(builder.Configuration);  //Persistence Layer Registration Services
 
-//builder.Services.AddDistributedMemoryCache(); //For our cache system
-builder.Services.AddStackExchangeRedisCache(opt => opt.Configuration = "localhost:6379");
+builder.Services.AddDistributedMemoryCache(); //For InMemory Cache
+//builder.Services.AddStackExchangeRedisCache(opt => opt.Configuration = "localhost:6379");  //For Redis Cache
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
