@@ -27,7 +27,7 @@ public class FileLogger:LoggerServiceBase
             logFilePath, rollingInterval: RollingInterval.Day,
             retainedFileCountLimit: null,
             fileSizeLimitBytes: 5000000,
-            outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{level}] {Message}{NewLine}{Exception}"
+            outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level}] {Message}{NewLine}{Exception}"
             ).CreateLogger();
     }
 }
