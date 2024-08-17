@@ -42,8 +42,8 @@ public static class ApplicationServiceRegistration
 
         });
 
-        services.AddSingleton<LoggerServiceBase, FileLogger>(); //To select logging system 
-
+        //services.AddSingleton<LoggerServiceBase, FileLogger>(); //File Logger
+        services.AddSingleton<LoggerServiceBase, MsSqlLogger>(); //MsSqlLogger
 
         return services;
     }
