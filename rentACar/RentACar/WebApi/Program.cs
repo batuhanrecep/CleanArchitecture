@@ -29,7 +29,7 @@ if (app.Environment.IsDevelopment())
 }
 
 //This if block exists for tests (Development or Production)
-if (app.Environment.IsProduction())  
+//if (app.Environment.IsProduction())  
 app.ConfigureCustomExceptionMiddleware(); //This comes from our core.packages
 
 app.UseHttpsRedirection();
