@@ -33,10 +33,12 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.HasData(getSeeds());
     }
 
+
     private IEnumerable<User> getSeeds()
     {
         List<User> users = new();
 
+        //For default user
         HashingHelper.CreatePasswordHash(
             password: "Passw0rd",
             passwordHash: out byte[] passwordHash,
