@@ -19,6 +19,12 @@ public class RefreshToken : Entity<int>
 
     public virtual User User { get; set; } = null!;
 
+    public RefreshToken()
+    {
+        Token = string.Empty;
+        CreatedByIp = string.Empty;
+    }
+
     public RefreshToken(int userId, string token, DateTime expires, string createdByIp)
     {
         UserId = userId;
