@@ -21,6 +21,7 @@ public class MsSqlLogger : LoggerServiceBase
         MSSqlServerSinkOptions sinkOptions = new()
         {
             TableName = logConfiguration.TableName,
+            AutoCreateSqlTable = logConfiguration.AutoCreateSqlTable,
             AutoCreateSqlDatabase = logConfiguration.AutoCreateSqlTable
         };
 
