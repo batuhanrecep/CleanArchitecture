@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.CrossCuttingConcerns.Serilog.ConfigurationModels;
+namespace Core.CrossCuttingConcerns.Logging.Serilog.ConfigurationModels;
 public class MsSqlConfiguration
 {
     public string ConnectionString { get; set; }
@@ -17,7 +17,7 @@ public class MsSqlConfiguration
         TableName = string.Empty;
     }
 
-    public MsSqlConfiguration(string connectionString,string tableName, bool autoCreateSqlTable)
+    public MsSqlConfiguration(string connectionString, string tableName, bool autoCreateSqlTable)
     {
         ConnectionString = connectionString;
         TableName = tableName;

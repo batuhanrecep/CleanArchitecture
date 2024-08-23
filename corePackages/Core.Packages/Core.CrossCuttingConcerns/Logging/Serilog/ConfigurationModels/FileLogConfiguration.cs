@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.CrossCuttingConcerns.Serilog.ConfigurationModels;
+namespace Core.CrossCuttingConcerns.Logging.Serilog.ConfigurationModels;
 public class FileLogConfiguration
 {
     public string FolderPath { get; set; }

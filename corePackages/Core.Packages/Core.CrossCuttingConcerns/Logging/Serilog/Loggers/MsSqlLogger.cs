@@ -1,6 +1,4 @@
-﻿using Core.CrossCuttingConcerns.Serilog.ConfigurationModels;
-using Core.CrossCuttingConcerns.Serilog.Messages;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Serilog.Sinks.MSSqlServer;
 using Serilog;
 using System;
@@ -8,8 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.CrossCuttingConcerns.Logging.Serilog;
+using Core.CrossCuttingConcerns.Logging.Serilog.ConfigurationModels;
+using Core.CrossCuttingConcerns.Logging.Serilog.Messages;
 
-namespace Core.CrossCuttingConcerns.Serilog.Loggers;
+namespace Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
 public class MsSqlLogger : LoggerServiceBase
 {
     public MsSqlLogger(IConfiguration configuration)

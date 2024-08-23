@@ -1,5 +1,6 @@
-﻿using Core.CrossCuttingConcerns.Serilog.ConfigurationModels;
-using Core.CrossCuttingConcerns.Serilog.Messages;
+﻿using Core.CrossCuttingConcerns.Logging.Serilog;
+using Core.CrossCuttingConcerns.Logging.Serilog.ConfigurationModels;
+using Core.CrossCuttingConcerns.Logging.Serilog.Messages;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 using Serilog.Core;
@@ -9,8 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.CrossCuttingConcerns.Serilog.Loggers;
-public class FileLogger:LoggerServiceBase
+namespace Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
+public class FileLogger : LoggerServiceBase
 {
     private readonly IConfiguration _configuration;
 

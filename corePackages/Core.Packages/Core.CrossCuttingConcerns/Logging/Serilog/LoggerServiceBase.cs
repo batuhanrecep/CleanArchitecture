@@ -1,12 +1,11 @@
-﻿
-using Serilog;
+﻿using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.CrossCuttingConcerns.Serilog;
+namespace Core.CrossCuttingConcerns.Logging.Serilog;
 public abstract class LoggerServiceBase
 {
     protected ILogger Logger { get; set; } //Be Careful - Microsoft.Extension.Logging package also has ILogger 

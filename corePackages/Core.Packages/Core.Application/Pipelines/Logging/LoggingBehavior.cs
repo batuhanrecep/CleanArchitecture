@@ -1,5 +1,5 @@
 ﻿using Core.CrossCuttingConcerns.Logging;
-using Core.CrossCuttingConcerns.Serilog;
+using Core.CrossCuttingConcerns.Logging.Serilog;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using System;
