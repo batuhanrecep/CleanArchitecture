@@ -43,10 +43,15 @@ public class AuthorizationBehavior<TRequest, TResponse> : IPipelineBehavior<TReq
 }
 
 //Microsoft.IdentityModel.Tokens package were have this method before 
-public static class StringExtensions
+public static class SimpleExtensions
 {
-    public static bool IsNullOrEmpty(this string? value)
+    public static bool IsNullOrEmpty<T>(this IEnumerable<T> enumerable)
     {
-        return string.IsNullOrEmpty(value);
+        if (enumerable != null)
+        {
+            return !enumerable.Any();
+        }
+
+        return true;
     }
 }
