@@ -18,4 +18,6 @@ public abstract class ExceptionHandler
     protected abstract Task HandleException(BusinessException businessException);
     protected abstract Task HandleException(ValidationException businessException);
     protected abstract Task HandleException(Exception exception);
+    protected abstract Task HandleException(AuthorizationException authorizationException);
+    protected abstract Task HandleException(NotFoundException notFoundException);
 }
