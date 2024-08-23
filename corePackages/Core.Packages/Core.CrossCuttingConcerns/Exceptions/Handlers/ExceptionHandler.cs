@@ -12,6 +12,8 @@ public abstract class ExceptionHandler
     {
         BusinessException businessException => HandleException(businessException),
         ValidationException validationException => HandleException(validationException),
+        AuthorizationException authorizationException => HandleException(authorizationException),
+        NotFoundException notFoundException => HandleException(notFoundException),
         _ => HandleException(exception)
     };
 
