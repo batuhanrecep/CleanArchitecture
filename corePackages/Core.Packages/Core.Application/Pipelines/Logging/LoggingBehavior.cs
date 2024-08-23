@@ -35,6 +35,12 @@ public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
             MethodName = next.Method.Name,
             Parameters = logParameters,
             User = _httpContextAccessor.HttpContext.User.Identity?.Name ?? "?"
+
+            //Detailed (verbose) Version
+            //User =
+            //_httpContextAccessor.HttpContext == null || _httpContextAccessor.HttpContext.User.Identity.Name == null
+            //? "?"
+            //: _httpContextAccessor.HttpContext.User.Identity.Name
         };
 
         _loggerServiceBase.Info(JsonSerializer.Serialize(logDetail));
