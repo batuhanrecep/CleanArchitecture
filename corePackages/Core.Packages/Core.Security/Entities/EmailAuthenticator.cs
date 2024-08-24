@@ -25,9 +25,10 @@ public class EmailAuthenticator : Entity<int>
         IsVerified = isVerified;
     }
 
-    public EmailAuthenticator(int id, int userId, bool isVerified) : base(id)
+    public EmailAuthenticator(int id, int userId, string? activationKey, bool isVerified) : base(id)
     {
         UserId = userId;
+        ActivationKey = activationKey;
         IsVerified = isVerified;
     }
 }
