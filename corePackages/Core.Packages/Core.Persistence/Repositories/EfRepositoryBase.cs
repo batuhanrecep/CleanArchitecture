@@ -132,58 +132,113 @@ where TContext : DbContext
     }
 
 
-    //SYNC - THESE ARE EMPTY FOR NOW
+
+    //SYNC - These are added recently, I need to make some tests about these
     //---------------------------------------------------------------------------------------------------
-    public TEntity? Get(Expression<Func<TEntity, bool>> predicate, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, bool withDeleted = false, bool enableTracking = true)
+    public TEntity? Get(
+        Expression<Func<TEntity, bool>> predicate,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+        bool enableTracking = true
+    )
     {
-        throw new NotImplementedException();
+        IQueryable<TEntity> queryable = Query();
+        if (!enableTracking)
+            queryable = queryable.AsNoTracking();
+        if (include != null)
+            queryable = include(queryable);
+        return queryable.FirstOrDefault(predicate);
     }
 
-    public Paginate<TEntity> GetList(Expression<Func<TEntity, bool>>? predicate = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, int index = 0, int size = 10,
-        bool withDeleted = false, bool enableTracking = true)
+    public Paginate<TEntity> GetList(
+        Expression<Func<TEntity, bool>>? predicate = null,
+        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+        int index = 0,
+        int size = 10,
+        bool enableTracking = true
+    )
     {
-        throw new NotImplementedException();
+        IQueryable<TEntity> queryable = Query();
+        if (!enableTracking)
+            queryable = queryable.AsNoTracking();
+        if (include != null)
+            queryable = include(queryable);
+        if (predicate != null)
+            queryable = queryable.Where(predicate);
+        if (orderBy != null)
+            return orderBy(queryable).ToPaginate(index, size);
+        return queryable.ToPaginate(index, size);
     }
 
-    public Paginate<TEntity> GetListByDynamic(DynamicQuery dynamic, Expression<Func<TEntity, bool>>? predicate = null, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, int index = 0,
-        int size = 10, bool withDeleted = false, bool enableTracking = true)
+    public Paginate<TEntity> GetListByDynamic(
+        DynamicQuery dynamic,
+        Expression<Func<TEntity, bool>>? predicate = null,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+        int index = 0,
+        int size = 10,
+        bool enableTracking = true
+    )
     {
-        throw new NotImplementedException();
+        IQueryable<TEntity> queryable = Query().ToDynamic(dynamic);
+        if (!enableTracking)
+            queryable = queryable.AsNoTracking();
+        if (include != null)
+            queryable = include(queryable);
+        if (predicate != null)
+            queryable = queryable.Where(predicate);
+        return queryable.ToPaginate(index, size);
     }
 
-    public bool Any(Expression<Func<TEntity, bool>>? predicate = null, bool withDeleted = false, bool enableTracking = true)
+    public bool Any(Expression<Func<TEntity, bool>>? predicate = null, bool enableTracking = true)
     {
-        throw new NotImplementedException();
+        IQueryable<TEntity> queryable = Query();
+        if (predicate is not null)
+            queryable = queryable.Where(predicate);
+        if (!enableTracking)
+            queryable = queryable.AsNoTracking();
+        return queryable.Any();
     }
 
     public TEntity Add(TEntity entity)
     {
-        throw new NotImplementedException();
+        Context.Add(entity);
+        Context.SaveChanges();
+        return entity;
     }
 
     public ICollection<TEntity> AddRange(ICollection<TEntity> entities)
     {
-        throw new NotImplementedException();
+        Context.AddRange(entities);
+        Context.SaveChanges();
+        return entities;
     }
 
     public TEntity Update(TEntity entity)
     {
-        throw new NotImplementedException();
+        Context.Update(entity);
+        Context.SaveChanges();
+        return entity;
     }
 
     public ICollection<TEntity> UpdateRange(ICollection<TEntity> entities)
     {
-        throw new NotImplementedException();
+        Context.UpdateRange(entities);
+        Context.SaveChanges();
+        return entities;
     }
 
     public TEntity Delete(TEntity entity, bool permanent = false)
     {
-        throw new NotImplementedException();
+        Context.Remove(entity);
+        Context.SaveChanges();
+        return entity;
     }
 
     public ICollection<TEntity> DeleteRange(ICollection<TEntity> entities, bool permanent = false)
     {
-        throw new NotImplementedException();
+        Context.RemoveRange(entities);
+        Context.SaveChanges();
+        return entities;
     }
 
     //---------------------------------------------------------------------------------------------------
