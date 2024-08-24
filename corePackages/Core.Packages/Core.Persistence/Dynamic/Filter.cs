@@ -25,5 +25,8 @@ public class Filter
     {
         Field = field;
         Operator = @operator;
+        //Value = value;
+        //Logic = logic;
+        //Filters = filters;
     }
 }
