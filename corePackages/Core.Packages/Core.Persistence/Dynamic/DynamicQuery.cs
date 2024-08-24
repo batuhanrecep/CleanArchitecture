@@ -17,9 +17,11 @@ public class DynamicQuery
 
     public DynamicQuery(IEnumerable<Sort>? sort, Filter? filter)
     {
-        
+        Sort = sort;
+        Filter = filter;
     }
 }
+
 //System.Linq.Dynamic library will transform these
 
 //Select * from cars where unitPrice<100 and (transmission = "automatic" or ...)...
