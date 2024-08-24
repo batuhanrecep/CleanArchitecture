@@ -15,7 +15,6 @@ public interface IRepository<TEntity, TEntityId> : IQuery<TEntity>
     TEntity? Get(
         Expression<Func<TEntity, bool>> predicate,
         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
-        bool withDeleted = false,
         bool enableTracking = true
     );
 
@@ -25,7 +24,6 @@ public interface IRepository<TEntity, TEntityId> : IQuery<TEntity>
         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
         int index = 0,
         int size = 10,
-        bool withDeleted = false,
         bool enableTracking = true
     );
 
@@ -35,11 +33,10 @@ public interface IRepository<TEntity, TEntityId> : IQuery<TEntity>
         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
         int index = 0,
         int size = 10,
-        bool withDeleted = false,
         bool enableTracking = true
     );
 
-    bool Any(Expression<Func<TEntity, bool>>? predicate = null, bool withDeleted = false, bool enableTracking = true);
+    bool Any(Expression<Func<TEntity, bool>>? predicate = null, bool enableTracking = true);
     TEntity Add(TEntity entity);
     ICollection<TEntity> AddRange(ICollection<TEntity> entities);
     TEntity Update(TEntity entity);
