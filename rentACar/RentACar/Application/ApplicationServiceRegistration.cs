@@ -1,10 +1,13 @@
-﻿using Core.Application.Pipelines.Caching;
+﻿using Application.Services.AuthenticatorService;
+using Core.Application.Pipelines.Caching;
 using Core.Application.Pipelines.Logging;
 using Core.Application.Pipelines.Transaction;
 using Core.Application.Pipelines.Validation;
 using Core.Application.Rules;
 using Core.CrossCuttingConcerns.Logging.Serilog;
 using Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
+using Core.Mailing;
+using Core.Mailing.MailKitImplementations;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -31,6 +34,8 @@ public static class ApplicationServiceRegistration
         {
             configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
 
+            //configuration.AddOpenBehavior(typeof(AuthorizationBehavior<,>));
+
             configuration.AddOpenBehavior(typeof(RequestValidationBehavior<,>));
 
             configuration.AddOpenBehavior(typeof(TransactionScopeBehavior<,>));
@@ -41,9 +46,13 @@ public static class ApplicationServiceRegistration
             configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
 
         });
+        services.AddScoped<IAuthenticatorService, AuthenticatorManager>();
 
         //services.AddSingleton<LoggerServiceBase, FileLogger>(); //File Logger
         services.AddSingleton<LoggerServiceBase, MsSqlLogger>(); //MsSqlLogger
+
+        services.AddSingleton<IMailService, MailKitMailService>();
+
 
         return services;
     }
