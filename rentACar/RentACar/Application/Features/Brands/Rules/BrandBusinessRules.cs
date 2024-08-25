@@ -2,6 +2,7 @@
 using Application.Services.Repositories;
 using Core.Application.Rules;
 using Core.CrossCuttingConcerns.Exceptions.Types;
+using Core.Persistence.Paging;
 using Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -28,5 +29,12 @@ public class BrandBusinessRules:BaseBusinessRules
             throw new BusinessException(BrandsMessages.BrandNameExists);
         }
 
+    }
+
+    public async Task BrandNameListCanNotBeDuplicatedWhenInserted(List<string> nameList)
+    {
+        Paginate<Brand> result = await _brandRepository.GetListAsync(predicate: b => nameList.Contains(b.Name), enableTracking: false);
+        if (result.Items.Any())
+            throw new BusinessException(BrandsMessages.BrandNameExists);
     }
 }
