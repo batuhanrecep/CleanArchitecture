@@ -14,6 +14,10 @@ public class OtpAuthenticator : Entity<int>
 
     public virtual User User { get; set; } = null!;
 
+    public OtpAuthenticator()
+    {
+    }
+
     public OtpAuthenticator(byte[] secretKey)
     {
         SecretKey = Array.Empty<byte>();
